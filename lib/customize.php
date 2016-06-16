@@ -107,7 +107,37 @@ function altitude_customizer_register() {
 
 	}
 	
+	// Inner page Background Images 
+	global $wp_customize;
 	
+		//$images = apply_filters( 'altitude_images', array( '1', '3', '5', '7' ) );
+		$images = apply_filters( 'altitude_images2', array( '1', '2', '3', '4', '5', '6', '7' ) );
+	
+	
+		$wp_customize->add_section( 'altitude-settings2', array(
+			'description' => __( 'Use the included default images or personalize your site by uploading your own images.<br /><br />The default images are <strong>1600 pixels wide and 1050 pixels tall</strong>.', 'altitude' ),
+			'title'    => __( 'Inner Page Background Images', 'altitude' ),
+			'priority' => 35,
+		) );
+	
+		foreach( $images as $image ) {
+	
+		$wp_customize->add_setting( $image2 .'-altitude-inner-image', array(
+			'default'  => sprintf( '%s/images/bg-%s.jpg', get_stylesheet_directory_uri(), $image2 ),
+			'sanitize_callback' => 'esc_url_raw',
+			'type'     => 'option',
+		) );
+	
+		$wp_customize->add_control( new Child_Altitude_Image_Control( $wp_customize, $image2 .'-altitude-inner-image', array(
+			'label'    => sprintf( __( 'Featured Section %s Image:', 'altitude' ), $image2 ),
+			'section'  => 'altitude-settings2',
+			'settings' => $image2 .'-altitude-inner-image',
+			'priority' => $image2+1,
+		) ) );
+	
+	}
+	
+
 	// Added to create a color select inside the image select section above.
 	$wp_customize->add_setting(
 			'altitude_section_color',
