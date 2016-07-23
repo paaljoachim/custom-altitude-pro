@@ -76,6 +76,8 @@
 
 */
 
+@import "animate.css";
+
 
 /*
 HTML5 Reset
@@ -267,7 +269,8 @@ h2 {
 	line-height: 1;
 }
 
-.front-page-2.solid-section h2 {
+.front-page-2.solid-section h2,
+.inner-page-2.solid-section h2 /* Added */ {
 	font-size: 48px;
 }
 
@@ -414,7 +417,9 @@ textarea:focus {
 }
 
 .front-page input:focus,
-.front-page textarea:focus {
+.front-page textarea:focus,
+.inner-page input:focus, /* Added */
+.inner-page textarea:focus /* Added */ {
 	border: 1px solid #22a1c4;
 	outline: none;
 }
@@ -599,7 +604,8 @@ Structure and Layout
 	word-wrap: break-word;
 }
 
-.front-page .site-container .site-inner {
+.front-page .site-container .site-inner,
+.inner-page .site-container .site-inner /* Added*/  {
 	margin-top: 0;
 	max-width: 100%;
 }
@@ -980,9 +986,8 @@ Site Header
 	
 	/* ADDED*/
 	/* box-shadow: 0px 1px 3px #ccc; */
-	height: 7%;							/* I made the site header smaller. I used % because it will also affect the responsive design om smaller devices. */
-	}
-	
+	height: 7%;		/* I made the site header smaller. I used % because it will also affect the responsive design om smaller devices. */
+	min-height: 48px;	
 }
 
 .featured-section .site-header {
@@ -994,11 +999,11 @@ Site Header
 }
 
 .site-header.dark {
-	background-color: #00B2EE;			/* Adjusted from #000 to become #00B2EE */
-	opacity: 0.8;
+	background: rgba(0,178,238, .6);			/* Originally #000 */
 	
 	/* ADDED when hello bar is present. Pushed site header below hello bar. */
-	margin-top: 45px; 
+	margin-top: 40px; 
+	height: 40px !important;
 }
 
 .site-header.dark > .wrap {
@@ -1105,11 +1110,13 @@ Site Navigation
 }
 
 .front-page .genesis-nav-menu li.current-menu-item > a,
+.inner-page .genesis-nav-menu li.current-menu-item > a, /* Added */
 .genesis-nav-menu > li > a {
 	/* border-bottom: 2px solid transparent; */		/* Adjusted - commented out border bottom to hide it.*/
 }
 
 .front-page .genesis-nav-menu li.current-menu-item > a:hover,
+.inner-page .genesis-nav-menu li.current-menu-item > a:hover, /* Added */
 .genesis-nav-menu li.current-menu-item > a,
 .genesis-nav-menu > li > a:hover {
 	border-color: #1167b8;       /* Originally #fff . Changed to a light blue.*/
@@ -1301,7 +1308,13 @@ Content Area
 .front-page-4,
 .front-page-5,
 .front-page-6,
-.front-page-7 {
+.front-page-7,
+.inner-page-2, /* Added */
+.inner-page-3, /* Added */
+.inner-page-4, /* Added */
+.inner-page-5, /* Added */
+.inner-page-6, /* Added */
+.inner-page-7 /* Added */ {
 	border-top: 20px solid transparent; /* Originally 54px - Adjusted to */
 	margin-top: -20px; /* Originally -54px  - Ajusted to -20px */
 	-webkit-background-clip: padding-box;
@@ -1314,7 +1327,11 @@ Content Area
 .front-page-1,
 .front-page-3,
 .front-page-5,
-.front-page-7 {
+.front-page-7,
+.inner-page-1, /* Added */
+.inner-page-3, /* Added */
+.inner-page-5, /* Added */
+.inner-page-7  /* Added */{
 	background-attachment: fixed;
 	background-color: #fff;
 	background-position: 50% 0;
@@ -1329,19 +1346,23 @@ Content Area
 	background: #ccc;
 }
 
-.front-page-1 {
+.front-page-1,
+.inner-page-1 /* Added */ {
 	position: relative;
 }
 
-.front-page-1 .image-section {
+.front-page-1 .image-section,
+.inner-page-1 .image-section /* Added */ {
 	padding-top: 75px;
 }
 
-.secondary-nav .front-page-1 .image-section {
+.secondary-nav .front-page-1 .image-section,
+.secondary-nav .inner-page-1 .image-section /* Added */{
 	padding-top: 150px;
 }
 
-.front-page-4 .solid-section {
+.front-page-4 .solid-section,
+.inner-page-4 .solid-section /* Added */ {
 	background-color: #f3f3f3;
 }
 
@@ -1354,7 +1375,8 @@ Content Area
 	margin-bottom: -10px;
 }
 
-.front-page .field-wrap:last-child {
+.front-page .field-wrap:last-child,
+.inner-page .field-wrap:last-child /* Added */{
 	margin-bottom: 0;
 }
 
@@ -1367,7 +1389,8 @@ Content Area
 /* Dashicons
 --------------------------------------------- */
 
-.front-page .dashicons {
+.front-page .dashicons,
+.inner-page .dashicons /* Added */{
 	font-size: 40px;
 	height: 40px;
 	margin-bottom: 20px;
@@ -1454,7 +1477,8 @@ Content Area
 	width: 100%;
 }
 
-.full-width-content.front-page .content {
+.full-width-content.front-page .content,
+.full-width-content.inner-page .content /* Added */ {
 	padding: 0;
 }
 
@@ -1816,13 +1840,17 @@ Media Queries
 	.front-page-1,
 	.front-page-3,
 	.front-page-5,
-	.front-page-7 {
+	.front-page-7,
+	.inner-page-1, /* Added */
+	.inner-page-3, /* Added */
+	.inner-page-5, /* Added */
+	.inner-page-7 /* Added */{
 	    background-attachment: scroll;
 	}
 
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 880px) { /* Originally max-width: 1023 - adjusted to 880px */
 
 	.site-inner,
 	.wrap {
@@ -1833,7 +1861,8 @@ Media Queries
 		margin-top: 80px;
 	}
 
-	.front-page .site-inner {
+	.front-page .site-inner,
+	.inner-page .site-inner /* Added */{
 		max-width: none;
 	}
 
@@ -1841,12 +1870,15 @@ Media Queries
 		position: static;
 	}
 	
-	.front-page .site-header {
+	.front-page .site-header,
+	.inner-page .site-header /* Added */ {
 		background-color: #00B2EE;   /* Originally #000. Now changed to keep the same light blue color I use in the site header. */
 		height: 20%;   /* Added height to show the responsive menu. */
+		min-height: 50px;
 	}
 	
-	.front-page .site-header > .wrap {
+	.front-page .site-header > .wrap,
+	.inner-page .site-header > .wrap /* Added */ {
 		border: none;
 	}
 
@@ -1891,7 +1923,8 @@ Media Queries
 		padding: 10px;
 	}
 
-	.front-page .site-inner {
+	.front-page .site-inner,
+	.inner-page .site-inner  /* Added */{
 		margin-top: 0;
 	}
 
@@ -1940,7 +1973,9 @@ Media Queries
 	}
 	
 	.front-page-1 .image-section,
-	.secondary-nav .front-page-1 .image-section {
+	.secondary-nav .front-page-1 .image-section,
+	.inner-page-1 .image-section, /* Added*/
+	.secondary-nav .inner-page-1 .image-section /* Added */ {
 		padding-top: 0;
 	}
 
@@ -1959,7 +1994,8 @@ Media Queries
 		padding: 0 5%;
 	}
 
-	.front-page .site-inner {
+	.front-page .site-inner,
+	.inner-page .site-inner /* Added */{
 		padding: 0;
 	}
 
@@ -2075,7 +2111,13 @@ Media Queries
 	.front-page-4,
 	.front-page-5,
 	.front-page-6,
-	.front-page-7 {
+	.front-page-7,
+	.inner-page-2, /* Added */
+	.inner-page-3, /* Added */
+	.inner-page-4, /* Added */
+	.inner-page-5, /* Added */
+	.inner-page-6, /* Added */
+	.inner-page-7  /* Added */{
 		border-top: 0;
 		margin-top: 0;
 	}
@@ -2107,16 +2149,16 @@ Media Queries
 
 
 
-/*---- ADDED ----*/
+/*---- ADDED Hello bar - Utility bar in the top of the screen. ----*/
 
 .hello-bar{
 	/* background-color: #00B2EE;		/* Original #333 */ 
-	background: rgba(0,178,238, .8);
+	background: rgba(0,178,238, .6);
 	/* box-shadow: 0 0 5px #ddd; */
 	display: none;
 	font-size: 15px;
 	font-weight: 700;
-	padding: 12px 2px 5px 5px;		/* Original 15px 15px - Adjusted to 10px 5px 5px 5px */
+	padding: 10px 2px 5px 5px;		/* Original 15px 15px - Adjusted to 10px 5px 5px 5px */
 	position: fixed;
 	text-align: left;
 	width: 100%;
@@ -2124,41 +2166,65 @@ Media Queries
 	color: #fff;
 	
 	/*margin-top: 47px;*/
-	height: 45px;
+	height: 40px;
 	/* opacity: .5; */
 }
 
 .preheaderright {
 	text-align: right;
+	width: 60%;
 }
 
 .preheaderleft {
 	text-align: center;
+	width: 37%;
+	height: 30px;
 }
 
 
 @media only screen and (max-width: 800px) {
 	.hello-bar{
-	  margin-top: 0; /*may need to adjust this value for mobile menu fixed position and when it kicks in and the max-width above */
+	  margin-top: 10px; /*may need to adjust this value for mobile menu fixed position and when it kicks in and the max-width above */
+	  height: 70px;
 	}
 	.preheaderright {
-	  width: 50%;
+	  width: 76%;
 	}
 	
 	.preheaderleft {
-		width: 50%;
+		width: 23%;
 		text-align: left;
 	}
 }
 
 
+/* Scroll to ID plugin CSS */
 .menu-item a.mPS2id-highlight {
-   background: rgba(255,251,30, .2);
-   border-color: #D7C603;
+   background: rgba(255,251,30, .1); /* Adds an opacity a very thin see through background. */
    color: #D7C603;
    border-radius: 9px;   
 }
 
-a:focus {
-	outline: none;
+
+#menu-top-menu .menu-item {
+	display: inline-block;
+	text-align: left;
 }
+
+
+#menu-top-menu li li {
+	margin-left: 0;
+}
+
+#menu-top-menu a {
+	color: #fff;
+	display: box;			/* Originally block. I changed it to box. */ 
+	font-size: 14px;
+	font-weight: 200;
+	letter-spacing: 1px;
+	padding: 5px 5px;
+	text-transform: uppercase;
+	font-weight: bold;		/* Added. I also added a bold to font weight so the menu items can stand out more. */
+}
+
+

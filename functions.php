@@ -27,8 +27,14 @@ function altitude_enqueue_scripts_styles() {
 
 	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_style( 'altitude-google-fonts', '//fonts.googleapis.com/css?family=Ek+Mukta:200,800', array(), CHILD_THEME_VERSION );
-
+		
+	//* Enqueue Parallax on non handhelds i.e., desktops, laptops etc. and not on tablets and mobiles
+	// Source: http://daneden.github.io/animate.css/
+	wp_enqueue_style( 'animate', get_stylesheet_directory_uri() . 'animate.css' );
+	wp_enqueue_script( 'waypoints', get_stylesheet_directory_uri() . '/js/jquery.waypoints.min.js', array( 'jquery' ), '1.0.0' );
+	wp_enqueue_script( 'waypoints-init', get_stylesheet_directory_uri() .'/js/waypoints-init.js' , array( 'jquery', 'waypoints' ), '1.0.0' );	
 }
+
 
 //* Add HTML5 markup structure
 add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
@@ -246,29 +252,72 @@ genesis_register_sidebar( array(
 
 /*---------- CUSTOM -----*/
 
+//* Register widget areas
+genesis_register_sidebar( array(
+	'id'          => 'inner-page-1',
+	'name'        => __( 'Inner Page 1', 'altitude' ),
+	'description' => __( 'This is the inner page 1 section.', 'altitude' ),
+) );
+genesis_register_sidebar( array(
+	'id'          => 'inner-page-2',
+	'name'        => __( 'Inner Page 2', 'altitude' ),
+	'description' => __( 'This is the inner page 2 section.', 'altitude' ),
+) );
+genesis_register_sidebar( array(
+	'id'          => 'inner-page-3',
+	'name'        => __( 'Inner Page 3', 'altitude' ),
+	'description' => __( 'This is the inner page 3 section.', 'altitude' ),
+) );
+genesis_register_sidebar( array(
+	'id'          => 'inner-page-4',
+	'name'        => __( 'Inner Page 4', 'altitude' ),
+	'description' => __( 'This is the inner page 4 section.', 'altitude' ),
+) );
+genesis_register_sidebar( array(
+	'id'          => 'inner-page-5',
+	'name'        => __( 'Inner Page 5', 'altitude' ),
+	'description' => __( 'This is the inner page 5 section.', 'altitude' ),
+) );
+genesis_register_sidebar( array(
+	'id'          => 'inner-page-6',
+	'name'        => __( 'Inner Page 6', 'altitude' ),
+	'description' => __( 'This is the inner page 6 section.', 'altitude' ),
+) );
+genesis_register_sidebar( array(
+	'id'          => 'inner-page-7',
+	'name'        => __( 'Inner Page 7', 'altitude' ),
+	'description' => __( 'This is the inner page 7 section.', 'altitude' ),
+) );
+
+
+
+
 // Enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'hello_bar_scripts_styles' );
 function hello_bar_scripts_styles() {
 	wp_enqueue_script( 'hello-bar', esc_url( get_stylesheet_directory_uri() ) . '/js/hello-bar.js', array( 'jquery' ), '1.0.0' );
 }
+
+
 //Add in new Widget areas
 add_action( 'widgets_init', 'hello_bar_extra_widgets' );
 function hello_bar_extra_widgets() {
 	genesis_register_sidebar( array(
 	'id'          => 'preheaderleft',
-	'name'        => __( 'preHeaderLeft', 'themename' ),
-	'description' => __( 'This is the preheader Left area', 'themename' ),
+	'name'        => __( 'preHeaderLeft', 'altitude-pro' ),
+	'description' => __( 'This is the preheader Left area', 'altitude-pro' ),
 	'before_widget' => '<div class="first one-half preheaderleft">',
-    	'after_widget' => '</div>',
+    'after_widget' => '</div>',
 	) );
 	genesis_register_sidebar( array(
 	'id'          => 'preheaderright',
-	'name'        => __( 'preHeaderRight', 'themename' ),
-	'description' => __( 'This is the preheader Left area', 'themename' ),
+	'name'        => __( 'preHeaderRight', 'altitude-pro' ),
+	'description' => __( 'This is the preheader Left area', 'altitude-pro' ),
 	'before_widget' => '<div class="one-half preheaderright">',
-    	'after_widget' => '</div>',
+    'after_widget' => '</div>',
 	) );
 }
+
 //Position the preHeader Area
 add_action('genesis_before_header','hello_bar_preheader_widget');
 function hello_bar_preheader_widget() {
@@ -282,9 +331,30 @@ function hello_bar_preheader_widget() {
     	echo '</div></div>';
 }
 
+add_filter( 'body_class', 'sk_body_class' );
+/**
+ * Add "inner" class to 'body' element for inner pages
+ * i.e., for all pages other than site's homepage/front page.
+ *
+ * @author Sridhar Katakam
+ * @link   http://sridharkatakam.com/add-inner-body-class-inner-pages-wordpress/
+ */
+function sk_body_class( $classes ) {
+	if ( ! is_front_page() ) {
+		$classes[] = 'inner';
+	}
 
-function my_scripts() {
-   wp_enqueue_style( 'fullpagecss', ( get_template_directory_uri() ) . '/js/jquery.fullPage.css', array(), '2.8.1', 'all' );
-   wp_enqueue_script('fullpagejs', ( get_template_directory_uri() ) . '/js/jquery.fullPage.min.js', array('jquery'), array(), '2.8.1', true );
-  }
- add_action( 'wp_print_scripts', 'my_scripts');
+	return $classes;
+}
+
+
+/* http://genesisdeveloper.me/different-primary-menu-on-pages-using-altitude-pro-theme/ and http://victorfont.com/conditional-secondary-menus-genesis-themes/ */
+function gd_nav_menu_args( $args ){
+ if( ( 'primary' == $args['theme_location'] ) && is_page('inner-page') ) {
+ $args['menu'] = 'Inner menu'; // Add your menu name here. My case it is "Menu for Page"
+ }
+ return $args;
+}
+add_filter( 'wp_nav_menu_args', 'gd_nav_menu_args' );
+
+
