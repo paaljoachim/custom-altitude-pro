@@ -33,6 +33,8 @@ function altitude_enqueue_scripts_styles() {
 	wp_enqueue_style( 'animate', get_stylesheet_directory_uri() . 'animate.css' );
 	wp_enqueue_script( 'waypoints', get_stylesheet_directory_uri() . '/js/jquery.waypoints.min.js', array( 'jquery' ), '1.0.0' );
 	wp_enqueue_script( 'waypoints-init', get_stylesheet_directory_uri() .'/js/waypoints-init.js' , array( 'jquery', 'waypoints' ), '1.0.0' );	
+	
+	wp_enqueue_style( 'custom-css', get_stylesheet_directory_uri() . 'custom.css' );
 }
 
 
@@ -357,4 +359,30 @@ function gd_nav_menu_args( $args ){
 }
 add_filter( 'wp_nav_menu_args', 'gd_nav_menu_args' );
 
+
+
+
+/*--------- Code from Showcase Pro - for adding a full width featured image below the title -----------*/
+
+//* Page Header
+ include_once( get_stylesheet_directory() . '/lib/page-header.php' );
+
+//* Add screen reader class to archive description
+add_filter( 'genesis_attr_author-archive-description', 'genesis_attributes_screen_reader_class' );
+
+//* Add viewport meta tag for mobile browsers
+// add_theme_support( 'genesis-responsive-viewport' );
+
+
+/* ==========================================================================
+ * Helper Functions
+ * ========================================================================== */
+
+/**
+ * Bar to Line Break
+ *
+ */
+function showcase_bar_to_br( $content ) {
+	return str_replace( ' | ', '<br class="mobile-hide">', $content );
+}
 

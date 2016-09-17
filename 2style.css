@@ -1,24 +1,19 @@
 /*
-	Theme Name: Custom Altitude Pro
+	Theme Name: Altitude Pro Theme
 	Theme URI: http://my.studiopress.com/themes/altitude/
 	Description: Make a stunning first impression, grab attention, and dynamically tell your story with beautiful images and clean typography.
-	Author: StudioPress and Paal Joachim
-	Author URI: 
-
-	Version: 1.0.3
-
+	Author: StudioPress
+	Author URI: http://www.studiopress.com/
+	Version: 1.0.2
 	Tags: black, white, blue, green, orange, pink, one-column, two-columns, responsive-layout, custom-header, custom-menu, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
-
 	Template: genesis
 	Template Version: 2.1
-
 	License: GPL-2.0+
-	License URI: http://www.opensource.org/licenses/gpl-license.php 
+	License URI: http://www.opensource.org/licenses/gpl-license.php
 */
 
 
 /* Table of Contents
-
 	- HTML5 Reset
 		- Baseline Normalize
 		- Box Sizing
@@ -73,10 +68,7 @@
 		- Max-width: 1023px
 		- Max-width: 800px
 		- Max-width: 480px
-
 */
-
-@import "animate.css";
 
 
 /*
@@ -233,7 +225,7 @@ blockquote::before {
 hr {
 	border: 0;
 	border-collapse: collapse;
-	border-top: 2px solid #f5f5f5; 
+	border-top: 1px solid #eee;
 	clear: both;
 	margin: 40px 0;
 }
@@ -270,7 +262,7 @@ h2 {
 }
 
 .front-page-2.solid-section h2,
-.inner-page-2.solid-section h2 /* Added */ {
+.inner-page-2.solid-section h2 {
 	font-size: 48px;
 }
 
@@ -322,6 +314,11 @@ img {
 .full-width-content img.pull-right {
 	float: right;
 	margin: 0 -200px 40px 40px;
+}
+
+.featured-content img,
+.gallery img {
+	width: auto;
 }
 
 /* Gallery
@@ -418,8 +415,8 @@ textarea:focus {
 
 .front-page input:focus,
 .front-page textarea:focus,
-.inner-page input:focus, /* Added */
-.inner-page textarea:focus /* Added */ {
+.inner-page input:focus,
+.inner-page textarea:focus {
 	border: 1px solid #22a1c4;
 	outline: none;
 }
@@ -546,10 +543,6 @@ input[type="submit"]:disabled:hover {
 	cursor: not-allowed;
 }
 
-.post-password-form input[type="password"] {
-	margin-bottom: 15px;
-}
-
 /* Tables
 --------------------------------------------- */
 
@@ -605,7 +598,7 @@ Structure and Layout
 }
 
 .front-page .site-container .site-inner,
-.inner-page .site-container .site-inner /* Added*/  {
+.inner-page .site-container .site-inner {
 	margin-top: 0;
 	max-width: 100%;
 }
@@ -976,34 +969,24 @@ Site Header
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-	/* background-color: #00B2EE;			/* Adjusted Original #000 */
-	background: rgba(0,178,238, .8);
+	background-color: #000;
 	left: 0;
 	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 999;
-	
-	/* ADDED*/
-	/* box-shadow: 0px 1px 3px #ccc; */
-	height: 7%;		/* I made the site header smaller. I used % because it will also affect the responsive design om smaller devices. */
-	min-height: 48px;	
 }
 
 .featured-section .site-header {
-	/* background-color: transparent; */		/* Turned off transperancy */
+	background-color: transparent;
 }
 
 .featured-section .site-header > .wrap {
-	/* border-bottom: 1px solid #fff; */		/* Turned off the bottom white border */
+	border-bottom: 1px solid #fff;
 }
 
 .site-header.dark {
-	background: rgba(0,178,238, .6);			/* Originally #000 */
-	
-	/* ADDED when hello bar is present. Pushed site header below hello bar. */
-	margin-top: 40px; 
-	height: 40px !important;
+	background-color: #000;
 }
 
 .site-header.dark > .wrap {
@@ -1023,8 +1006,8 @@ Site Header
 
 .title-area {
 	float: left;
-	padding: 15px 0;			/* Originally 25px 0 now changed to 15px 0 */
-	width: 250px;				/* Originally 360px now changed to 250px - giving more space to the menu on the right. */
+	padding: 25px 0;
+	width: 360px;
 }
 
 .site-header.dark .title-area {
@@ -1088,17 +1071,16 @@ Site Navigation
 
 .genesis-nav-menu a {
 	color: #fff;
-	display: box;			/* Originally block. I changed it to box. */ 
+	display: block;
 	font-size: 14px;
 	font-weight: 200;
 	letter-spacing: 1px;
 	padding: 30px 15px;
 	text-transform: uppercase;
-	font-weight: bold;		/* Added. I also added a bold to font weight so the menu items can stand out more. */
 }
 
 .site-header.dark .genesis-nav-menu a {
-	 padding: 5px 12px 8px 7px;    /* Adjusted from 20px 15px to 5px 15px 8px 7px */
+	padding: 20px 15px;
 }
 
 .genesis-nav-menu li.highlight a:hover::before {
@@ -1110,22 +1092,20 @@ Site Navigation
 }
 
 .front-page .genesis-nav-menu li.current-menu-item > a,
-.inner-page .genesis-nav-menu li.current-menu-item > a, /* Added */
+.inner-page .genesis-nav-menu li.current-menu-item > a,
 .genesis-nav-menu > li > a {
-	/* border-bottom: 2px solid transparent; */		/* Adjusted - commented out border bottom to hide it.*/
+	border-bottom: 2px solid transparent;
 }
 
 .front-page .genesis-nav-menu li.current-menu-item > a:hover,
-.inner-page .genesis-nav-menu li.current-menu-item > a:hover, /* Added */
+.inner-page .genesis-nav-menu li.current-menu-item > a:hover,
 .genesis-nav-menu li.current-menu-item > a,
 .genesis-nav-menu > li > a:hover {
-	border-color: #1167b8;       /* Originally #fff . Changed to a light blue.*/
-	color: #d6d4d4;              /* Added - the link color changes on hover. */
+	border-color: #fff;
 }
 
 .genesis-nav-menu > .menu-item > a {
 	text-transform: uppercase;
-	padding: 5px 12px 8px 7px;		/* Added - Top 5px, right 15px, bottom 8px and left 7px. I adjusted the distance between the menu links and the bottom border line. */ 
 }
 
 .genesis-nav-menu .sub-menu {
@@ -1204,8 +1184,6 @@ Site Navigation
 
 .nav-primary {
 	text-align: center;
-	margin-top: 15px;			/* Added - more space above the menu. */
-	
 }
 
 .nav-primary .genesis-nav-menu {
@@ -1270,17 +1248,17 @@ Content Area
 }
 
 .image-section {
-	/* background: -moz-linear-gradient(top,  rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.8) 80%, rgba(0,0,0,0.9) 100%);
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.8) 80%, rgba(0,0,0,0.9) 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.2)), color-stop(30%,rgba(0,0,0,0.5)), color-stop(80%,rgba(0,0,0,0.8)), color-stop(100%,rgba(0,0,0,0.9)));
 	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 30%,rgba(0,0,0,0.8) 80%,rgba(0,0,0,0.9) 100%);
 	background: -o-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 30%,rgba(0,0,0,0.8) 80%,rgba(0,0,0,0.9) 100%);
 	background: -ms-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 30%,rgba(0,0,0,0.8) 80%,rgba(0,0,0,0.9) 100%);
 	background: linear-gradient(to bottom,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 30%,rgba(0,0,0,0.8) 80%,rgba(0,0,0,0.9) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#e6000000',GradientType=0 ); */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#e6000000',GradientType=0 );
 	display: table;
 	overflow: hidden;
 	table-layout: fixed;
-	width: 100%; 
+	width: 100%;
 }
 
 .image-section .widget-area {
@@ -1309,14 +1287,14 @@ Content Area
 .front-page-5,
 .front-page-6,
 .front-page-7,
-.inner-page-2, /* Added */
-.inner-page-3, /* Added */
-.inner-page-4, /* Added */
-.inner-page-5, /* Added */
-.inner-page-6, /* Added */
-.inner-page-7 /* Added */ {
-	border-top: 20px solid transparent; /* Originally 54px - Adjusted to */
-	margin-top: -20px; /* Originally -54px  - Ajusted to -20px */
+.inner-page-2,
+.inner-page-3,
+.inner-page-4,
+.inner-page-5,
+.inner-page-6,
+.inner-page-7 {
+	border-top: 54px solid transparent;
+	margin-top: -54px;
 	-webkit-background-clip: padding-box;
 	-moz-background-clip:    padding;
 	background-clip:         padding-box;
@@ -1328,10 +1306,10 @@ Content Area
 .front-page-3,
 .front-page-5,
 .front-page-7,
-.inner-page-1, /* Added */
-.inner-page-3, /* Added */
-.inner-page-5, /* Added */
-.inner-page-7  /* Added */{
+.inner-page-1,
+.inner-page-3,
+.inner-page-5,
+.inner-page-7 {
 	background-attachment: fixed;
 	background-color: #fff;
 	background-position: 50% 0;
@@ -1341,28 +1319,23 @@ Content Area
 	background-size:         cover;
 }
 
-/* ADDED */
-.front-page-2 {
-	background: #ccc;
-}
-
 .front-page-1,
-.inner-page-1 /* Added */ {
+.inner-page-1 {
 	position: relative;
 }
 
 .front-page-1 .image-section,
-.inner-page-1 .image-section /* Added */ {
+.inner-page-1 .image-section {
 	padding-top: 75px;
 }
 
 .secondary-nav .front-page-1 .image-section,
-.secondary-nav .inner-page-1 .image-section /* Added */{
+.secondary-nav .inner-page-1 .image-section {
 	padding-top: 150px;
 }
 
 .front-page-4 .solid-section,
-.inner-page-4 .solid-section /* Added */ {
+.inner-page-4 .solid-section {
 	background-color: #f3f3f3;
 }
 
@@ -1376,7 +1349,7 @@ Content Area
 }
 
 .front-page .field-wrap:last-child,
-.inner-page .field-wrap:last-child /* Added */{
+.inner-page .field-wrap:last-child {
 	margin-bottom: 0;
 }
 
@@ -1390,7 +1363,7 @@ Content Area
 --------------------------------------------- */
 
 .front-page .dashicons,
-.inner-page .dashicons /* Added */{
+.inner-page .dashicons {
 	font-size: 40px;
 	height: 40px;
 	margin-bottom: 20px;
@@ -1418,7 +1391,7 @@ Content Area
 	padding: 0;
 	width: 100%;
 }
-	
+
 .widget-area.flexible-widgets.widget-half .widget,
 .flexible-widgets.widget-halves .widget {
 	width: 48.717948717948715%;
@@ -1478,7 +1451,7 @@ Content Area
 }
 
 .full-width-content.front-page .content,
-.full-width-content.inner-page .content /* Added */ {
+.full-width-content.inner-page .content {
 	padding: 0;
 }
 
@@ -1807,14 +1780,14 @@ Media Queries
 	.wrap {
 		max-width: 1140px;
 	}
-	
+
 }
 
 @media only screen and (max-width: 1200px) {
 
 	.site-inner,
 	.wrap {
-		max-width: 98%;  /* Original 860px - Adjusted - Keeping the title on the top left giving space to the menu on the right. */
+		max-width: 960px;
 	}
 
 	.site-header .widget-area {
@@ -1828,63 +1801,55 @@ Media Queries
 	.full-width-content .content {
 		padding: 0 110px;
 	}
-	
+
 	.genesis-nav-menu a {
 		padding: 30px 10px;
 	}
-	
+
 	.site-header.dark .genesis-nav-menu a {
-		padding: 5px 15px 8px 7px; 		/* Adjusted from 20px 10px to 5px 15px 8px 7px */
+		padding: 20px 10px;
 	}
-	
+
 	.front-page-1,
 	.front-page-3,
 	.front-page-5,
 	.front-page-7,
-	.inner-page-1, /* Added */
-	.inner-page-3, /* Added */
-	.inner-page-5, /* Added */
-	.inner-page-7 /* Added */{
+	.inner-page-1,
+	.inner-page-3,
+	.inner-page-5,
+	.inner-page-7 {
 	    background-attachment: scroll;
 	}
 
 }
 
-@media only screen and (max-width: 880px) { /* Originally max-width: 1023 - adjusted to 880px */
+@media only screen and (max-width: 1023px) {
 
 	.site-inner,
 	.wrap {
-		max-width: 768px;	
+		max-width: 768px;
 	}
-	
-	/* Added */
-	.site-inner {
-		padding: 5%;
-	}
-	
+
 	.secondary-nav .site-inner {
 		margin-top: 80px;
 	}
 
 	.front-page .site-inner,
-	.inner-page .site-inner /* Added */{
+	.inner-page .site-inner {
 		max-width: none;
 	}
 
 	.site-header {
-		position: absolute;	/* Adjusted from static */
-		min-height: 90px;
+		position: static;
 	}
-	
+
 	.front-page .site-header,
-	.inner-page .site-header /* Added */ {
-		background-color: #00B2EE;   /* Originally #000. Now changed to keep the same light blue color I use in the site header. */
-		height: 20%;   /* Added height to show the responsive menu. */
-		min-height: 50px;
+	.inner-page .site-header {
+		background-color: #000;
 	}
-	
+
 	.front-page .site-header > .wrap,
-	.inner-page .site-header > .wrap /* Added */ {
+	.inner-page .site-header > .wrap {
 		border: none;
 	}
 
@@ -1894,12 +1859,12 @@ Media Queries
 	.title-area {
 		width: 100%;
 	}
-	
+
 	.site-header .title-area,
 	.site-header.dark .title-area {
 		padding: 15px 0;
 	}
-	
+
 	.header-image .dark .site-title > a {
 		height: 76px;
 	}
@@ -1909,15 +1874,15 @@ Media Queries
 	.site-title {
 		text-align: center;
 	}
-	
+
 	.header-image .site-title > a {
 		background-position: center !important;
 	}
-	
+
 	.nav-primary .genesis-nav-menu {
 		float: none;
 	}
-	
+
 	.nav-secondary,
 	.site-header.dark .nav-secondary {
 		border-bottom: none;
@@ -1930,7 +1895,7 @@ Media Queries
 	}
 
 	.front-page .site-inner,
-	.inner-page .site-inner  /* Added */{
+	.inner-page .site-inner {
 		margin-top: 0;
 	}
 
@@ -1964,7 +1929,7 @@ Media Queries
 		margin: 0;
 		width: 100%;
 	}
-	
+
 	.flexible-widgets.widget-full .widget,
 	.flexible-widgets.widget-halves .widget,
 	.flexible-widgets.widget-thirds .widget,
@@ -1972,16 +1937,16 @@ Media Queries
 		margin: 0 auto 20px;
 		width: 100%;
 	}
-	
+
 	.image-section h2,
 	.solid-section h2 {
 		font-size: 60px;
 	}
-	
+
 	.front-page-1 .image-section,
 	.secondary-nav .front-page-1 .image-section,
-	.inner-page-1 .image-section, /* Added*/
-	.secondary-nav .inner-page-1 .image-section /* Added */ {
+	.inner-page-1 .image-section,
+	.secondary-nav .inner-page-1 .image-section {
 		padding-top: 0;
 	}
 
@@ -2001,15 +1966,14 @@ Media Queries
 	}
 
 	.front-page .site-inner,
-	.inner-page .site-inner /* Added */{
+	.inner-page .site-inner {
 		padding: 0;
 	}
 
 	.genesis-nav-menu.responsive-menu {
 		display: none;
 		float: none;
-		padding: 3px 3px 20px 15px;		/* Adjusted padding-bottom: 20px */
-		background: rgba(0,178,238, .6);
+		padding-bottom: 20px;
 	}
 
 	.genesis-nav-menu.responsive-menu .menu-item,
@@ -2032,13 +1996,8 @@ Media Queries
 		text-transform: none;
 	}
 
-/* Added */
-.genesis-nav-menu.responsive-menu li a:hover {
-	background: rgba(0,178,238, 1);
-}
-
 	.genesis-nav-menu.responsive-menu .menu-item-has-children {
-		cursor: pointer;	
+		cursor: pointer;
 	}
 
 	.genesis-nav-menu.responsive-menu .menu-item-has-children > a {
@@ -2112,37 +2071,37 @@ Media Queries
 	.altitude-home .simple-social-icons ul li {
 		margin: 0 20px 20px !important;
 	}
-	
+
 	.footer-widgets .wrap {
 		padding-top: 60px;
 		padding-bottom: 60px;
 	}
-	
+
 	.front-page-2,
 	.front-page-3,
 	.front-page-4,
 	.front-page-5,
 	.front-page-6,
 	.front-page-7,
-	.inner-page-2, /* Added */
-	.inner-page-3, /* Added */
-	.inner-page-4, /* Added */
-	.inner-page-5, /* Added */
-	.inner-page-6, /* Added */
-	.inner-page-7  /* Added */{
+	.inner-page-2,
+	.inner-page-3,
+	.inner-page-4,
+	.inner-page-5,
+	.inner-page-6,
+	.inner-page-7 {
 		border-top: 0;
 		margin-top: 0;
 	}
-	
+
 	.image-section .flexible-widgets {
 		padding-bottom: 80px;
 	}
-	
+
 	.solid-section .flexible-widgets {
 		padding-bottom: 40px;
 		padding-top: 60px;
 	}
-	
+
 	.bottom-image {
 		margin-top: 60px;
 		margin-bottom: -80px;
@@ -2155,297 +2114,6 @@ Media Queries
 	.image-section h2,
 	.solid-section h2 {
 		font-size: 40px;
-	}
-
-}
-
-
-
-/*---- ADDED Hello bar - Utility bar in the top of the screen. ----*/
-
-.hello-bar{
-	/* background-color: #00B2EE;		/* Original #333 */ 
-	background: rgba(0,178,238, .6);
-	/* box-shadow: 0 0 5px #ddd; */
-	display: none;
-	font-size: 15px;
-	font-weight: 700;
-	padding: 10px 2px 5px 5px;		/* Original 15px 15px - Adjusted to 10px 5px 5px 5px */
-	position: fixed;
-	text-align: left;
-	width: 100%;
-	z-index: 9999;
-	color: #fff;
-	
-	/*margin-top: 47px;*/
-	height: 40px;
-	/* opacity: .5; */
-}
-
-.preheaderright {
-	text-align: right;
-	width: 60%;
-}
-
-.preheaderleft {
-	text-align: center;
-	width: 37%;
-	height: 30px;
-}
-
-
-@media only screen and (max-width: 800px) {
-	.hello-bar{
-	  margin-top: 0px; /*may need to adjust this value for mobile menu fixed position and when it kicks in and the max-width above */
-	  height: 70px;
-	}
-	.preheaderright {
-	  width: 76%;
-	}
-	
-	.preheaderleft {
-		width: 23%;
-		text-align: left;
-	}
-}
-
-
-
-
-
-/* White Header
- * ========================================================================== 
-
-.white-header .site-header {
-	background: #fff;
-}
-
-.white-header .site-header a {
-	color: #333;
-}
-
-@media only screen and (max-width: 800px) {
-	.white-header .menu-toggle:before,
-	.white-header .sub-menu-toggle:before {
-		color: #333;
-	}
-}
-
-@media only screen and (min-width: 800px) {
-
-	.white-header .genesis-nav-menu .menu-item.highlight a {
-		border: 1px solid #333;
-		color: #333;
-	}
-
-	.white-header .genesis-nav-menu .menu-item.highlight a:hover,
-	.white-header .genesis-nav-menu .menu-item.highlight.current-menu-item a {
-	}
-}
-
-/* Entry Navigation
-
-.pagination {
-	margin-top: 40px;
-	text-align: center;
-}
-
-.pagination ul {
-	display: inline-block;
-	overflow: hidden;
-}
-
-.pagination li {
-	border-radius: 3px;
-	margin: 2px;
-	list-style-type: none;
-	display: block;
-	float: left;
-	overflow: hidden;
-}
-
-.pagination .pagination-omission {
-	border: 0;
-}
-
-.pagination li a {
-	display: block;
-	padding: 8px 16px;
-	text-decoration: none;
-}
-
-.pagination li a:hover,
-.pagination li.active a {
-	background: rgba(0,178,238, .6);
-	color: #fff;
-	border-bottom: 0;
-}
-
-/* Background Images and Colors
- * ========================================================================== */
-
-.with-background-image {
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-}
-
-.with-background-image:after {
-	-ms-filter: "alpha(Opacity=90)";
-	filter: alpha(opacity=90);
-	opacity: 0.90;
-}
-
-.bg-primary,
-.bg-secondary,
-.bg-primary a,
-.bg-secondary a {
-	color: #fff;
-	
-}
-
-/*[class*="bg-"],
-[class*="bg-"] .wrap {
-	position: relative;
-	z-index: 2;
-}*/
-
-.bg-primary:after,
-.bg-secondary:after,
-.bg-light-gray:after,
-.bg-dark-gray:after {
-	content: " ";
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 0;
-}
-
-.bg-primary:after {
-	/*background: #52c0cb; */
-	background: rgba(199, 210, 254, 0.2);	
-}
-
-/*
-.bg-secondary:after {
-	background: #e6413e;
-}
-
-.bg-light-gray:after {
-	background: #f2f2f2;
-}
-
-.bg-dark-gray:after {
-	background: #333333;
-}
-
-/* Page Header
- * ========================================================================== */
-
-.page-header {
-	padding: 8% 0;
-	position: relative;
-	text-align: center;
-	color: #ccc;
-		
-	/* ADDED */
-	box-shadow: 0px 2px 2px #444;
-	/* Color page header image
-	background: rgba(0, 0, 254, 0.4); */	
-}
-
-.home .page-header,
-.home .bg-primary,
-.page-template-template_inner-page .page-header,
-.page-template-template_inner-page .bg-primary{
-	padding: 0;
-	margin: 0;
-	height: 0;
-}
-
-.front-page .site-container .site-inner, .inner-page .site-container .site-inner {
-    max-width: 100%;
-}
-
-/* Added */
-.site-inner {
-	margin-top: 5px !important;
-	max-width: 2000px !important;
-}
-
-/* Added */
-.breadcrumb {
-	margin-top: -3px;
-	color: #0000bc;
-}
-
-.page-header h1,
-.page-header .author-box-title {
-	line-height: 1.2;
-	font-size: 60px;
-	margin-bottom: 0.25em;
-	display: inline-block;
-	
-	/* Added */
-	text-shadow: 0 1px 3px #000;
-}
-
-.page-header p {
-	font-size: 24px;
-	max-width: 740px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.page-header p:last-child {
-	margin-bottom: 0;
-}
-
-.page-header a:not(.button) {
-	opacity: .5;
-}
-
-.page-header a:hover:not(.button) {
-	opacity: 1;
-}
-
-.page-header .entry-meta {
-	font-size: 14px;
-}
-
-@media only screen and (max-width: 870px) {
-
-	.page-header {
-		padding: 11% 0;
-	}
-
-	.page-header h1,
-	.page-header .author-box-title {
-		font-size: 40px;
-	}
-
-	.page-header .entry-meta {
-		font-size: 16px;
-	}
-
-}
-
-@media only screen and (max-width: 799px) {
-
-	.page-header {
-		padding: 15% 0;
-	}
-
-	.page-header h1,
-	.page-header .author-box-title {
-		font-size: 42px;
-	}
-
-	.page-header .entry-meta {
-		font-size: 16px;
 	}
 
 }
